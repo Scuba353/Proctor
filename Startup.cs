@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Proctors.Models;
+using MySql.Data.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Proctors
 {
@@ -21,6 +25,8 @@ namespace Proctors
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ProctorContext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -37,13 +43,8 @@ namespace Proctors
             }
 
             app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseSession();
+            app.UseMvc();
         }
     }
 }
