@@ -2,13 +2,13 @@ using Microsoft.EntityFrameworkCore;
  
 namespace Proctors.Models
 {
-    public class ProctorContext : DbContext
+    public class ProctorsContext : DbContext
     {
         // base() calls the parent class' constructor passing the "options" parameter along
-        public ProctorContext(DbContextOptions<ProctorContext> options) : base(options) { }
-        public DbSet<Proctor> Proctors { get; set; }
-        public DbSet<Location> Locations { get; set; }
+        public ProctorsContext(DbContextOptions<ProctorsContext> options) : base(options) { }
+        public DbSet<Proctor> Proctor { get; set; }
+        public DbSet<Location> Location { get; set; }
 
-        public DbSet<ProctorLocation> Proctors_Locations { get; set; }
+        public DbSet<ProctorLocation> Proctors_Location { get; set; }
     }
 }
