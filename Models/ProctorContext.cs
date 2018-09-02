@@ -9,6 +9,6 @@ namespace Proctors.Models
         public DbSet<Proctor> Proctor { get; set; }
         public DbSet<Location> Location { get; set; }
 
-        public DbSet<ProctorLocation> Proctors_Location { get; set; }
+        public DbSet<ProctorLocation> ProctorLocation { get; set; }
     }
 }

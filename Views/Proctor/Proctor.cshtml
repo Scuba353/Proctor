@@ -1,1 +1,48 @@
-<p>made it to proctor page- list of proctors</p>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<h2>Active Proctors</h2>
+
+<table>
+    <tr>
+        <th>Proctor Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Assigned Locations</th>
+        <th>Actions</th>
+
+    </tr>
+
+    @foreach(var p in @ViewBag.listofproctors){
+    <tr>
+        <td>@p.proctorid</td>
+        <td>@p.FirstName</td>
+        <td>@p.LastName</td> 
+        <td>@p.Email</td>
+        <td> @foreach(var a in @p.assignedLocations){
+           @a.Location.locationName <br>
+            }</td> 
+        <td><a href="edit/@p.proctorid">Edit</a> <a href="delete/@p.proctorid">Delete</a> <a href="addlocation/@p.proctorid">Add location</a></td>
+
+    </tr> 
+    }
+</table>
+
+<form action="/create" method="get">
+<button >Create New Proctor Account</button></form>

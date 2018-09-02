@@ -1,0 +1,43 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<p>@ViewBag.proctorid</p>
+
+<table>
+    <tr>
+        <th>Location Id</th>
+        <th>Location Name</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Add to Proctor</th>
+
+    </tr>
+
+    @foreach(var p in @ViewBag.listoflocations){
+    <tr>
+        <td>@p.locationid</td>
+        <td>@p.locationName</td>
+        <td>@p.street</td> 
+        <td>@p.city</td>
+        <td>@p.state</td>
+        <td><a href="addproctorlocation/@p.locationid">Add</a></td>
+
+    </tr> 
+    }
+</table>

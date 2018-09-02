@@ -31,22 +31,29 @@ namespace Proctors.Controllers
         {
             var ReturnedValue = _context.Proctor.SingleOrDefault(user => user.Email == Email);
             if(ReturnedValue == null){
-                ViewBag.emaildoesnotexist="The email used does not exist. Please contact the proctor administrator to set up your account.";
-                return View("index");
+                int auth = 0;
+                return RedirectToAction("auth", "Home", new {auth= auth});
             }
             else{
                 if(ReturnedValue.Password == Password){
                     HttpContext.Session.SetString("username", ReturnedValue.FirstName);
                     HttpContext.Session.SetInt32("userid", ReturnedValue.proctorid);
                     int id= ReturnedValue.proctorid;
-                    return RedirectToAction("allproctors", "Proctor", new {id= id});
+                    int auth= 1;
+                    return RedirectToAction("allproctors", "Proctor", new {id= id, auth= auth});
                 }
                 else{
-                    ViewBag.invalidpassword= "The password you entered does not match the email.";
+                    ViewBag.invalidpassword= "The password you entered does not match the email on file.";
                     return View("index");
                 }
             }
-        }   
+        } 
+        [HttpGet]
+        [Route("auth")]
+        public IActionResult Auth()
+        {
+            return View("Not_Auth");
+        }  
         
     }
 }

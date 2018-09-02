@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Proctors.Models.LoginViewModel
+<div asp-validation-summary="All"></div>
+
+@ViewBag.invalidpassword
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="col-md-6">
+        <h2>Create a new Account</h2>
+        <form action="/createproctor" method="Post">
+            <label asp-for= "FirstName"></label>
+            <input asp-for= "FirstName"><br>
+            <label asp-for= "LastName"></label>
+            <input asp-for= "LastName"><br>
+            <label asp-for= "Email"></label>
+            <input asp-for= "Email"><br>
+            <label asp-for= "Password"></label>
+            <input asp-for= "Password"><br>
+            <button>Create new Proctor Account</button>
+        </form>
+    </div>
+</div>

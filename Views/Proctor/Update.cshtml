@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Proctors.Models.LoginViewModel
+<div asp-validation-summary="All"></div>
+
+@ViewBag.invalidpassword
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="col-md-6">
+        <h2>Update the info for @ViewBag.thisproctor.FirstName @ViewBag.thisproctor.LastName</h2>
+        <form action="updateproctor/@ViewBag.thisproctor.proctorid" method="Post">
+            <label asp-for= "FirstName"></label>
+            <input asp-for= "FirstName"><br>
+            <label asp-for= "LastName"></label>
+            <input asp-for= "LastName"><br>
+            <label asp-for= "Email"></label>
+            <input asp-for= "Email"><br>
+            <label asp-for= "Password"></label>
+            <input asp-for= "Password"><br>
+            <button>Update Proctor Account</button>
+        </form>
+    </div>
+</div>

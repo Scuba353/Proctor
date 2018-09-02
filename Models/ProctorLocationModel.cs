@@ -9,13 +9,13 @@ namespace Proctors.Models
         [Key]
         public int proctorlocationid { get; set; }
         
-        // [ForeignKey("userid")] 
+        [ForeignKey("proctorid")] 
         public int proctorid { get; set; }
         public Proctor Proctor { get; set; }
         
-        //[ForeignKey("locationid")]
+        [ForeignKey("locationid")]
         public int locationid { get; set; }
-        public Location Locations { get; set; }
+        public Location Location { get; set; }
         
 
     }
